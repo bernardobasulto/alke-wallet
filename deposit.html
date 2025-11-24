@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Wallet - Depositar</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body {
+      padding: 20px;
+      padding-top: 80px;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    
+    #currentBalance {
+      font-weight: bold;
+      color: #28a745;
+    }
+    .navbar-brand {
+      font-weight: bold;
+    }
+    #depositInfo {
+      margin-top: 15px;
+    }
+    
+    .alert {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Barra de Navegación -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="menu.html">
+      <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE5IDE0VjIwSDUuMDAwMDFWMTBNNS4wMDAwMSAxMEgxOU0xMiAxNUwxMiA5TTEyIDlNOSAxMk0xMiA5TDE1IDEyIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K" width="24" height="24" class="d-inline-block align-top" alt="">
+      Alke Wallet
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="menu.html">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <!-- Cambia a 'active' según la página -->
+          <a class="nav-link active" href="deposit.html">Depositar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="sendmoney.html">Enviar Dinero</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="retiros.html">Retirar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="transactions.html">Movimientos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-warning" href="index.html">Cerrar Sesión</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  <div class="container">
+    <h2>Depositar</h2>
+    <div id="alert-container"></div>
+    <p>Saldo actual: <span id="currentBalance"></span></p>
+    <form id="depositForm">
+      <div class="form-group">
+        <label for="depositAmount">Monto a depositar:</label>
+        <input type="number" class="form-control" id="depositAmount" placeholder="Enter amount">
+      </div>
+      <button type="submit" class="btn btn-primary">Realizar depósito</button>
+    </form>
+    <div id="depositInfo"></div>
+    <a href="menu.html" class="btn btn-secondary">Volver al Menú Principal</a>
+  </div>
+</body>
+<script>
+$(document).ready(function() {
+  // Mostrar saldo actual
+  const balance = localStorage.getItem("balance") || 0;
+  $('#currentBalance').text("$" + balance);
+
+  $('#depositForm').submit(function(e) {
+    e.preventDefault();
+
+    const monto = Number($('#depositAmount').val());
+    if (monto <= 0) {
+      alert("Ingrese un monto válido");
+      return;
+    }
+
+    let saldo = Number(localStorage.getItem("balance")) || 0;
+    saldo += monto;
+
+    localStorage.setItem("balance", saldo);
+
+    // Guardar movimiento (reemplazar esta parte)
+const movs = JSON.parse(localStorage.getItem("transactions") || "[]");
+movs.unshift(`Depósito +$${monto}`);
+localStorage.setItem("transactions", JSON.stringify(movs));
+
+    // Mostrar información del depósito
+    $('#depositInfo').html('<p class="text-success">Monto depositado: $' + monto + '</p>');
+    
+    // Mostrar alerta de éxito
+    $('#alert-container').html('<div class="alert alert-success alert-dismissible fade show" role="alert">Depósito realizado. Nuevo saldo: $' + saldo + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+    $('.alert').show();
+
+    // Redirigir después de 2 segundos
+    setTimeout(function() {
+      window.location.href = "menu.html";
+    }, 2000);
+  });
+});
+</script>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Wallet - Últimos Movimientos</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body {
+      padding: 20px;
+      padding-top: 80px;
+    }
+    .navbar-brand {
+      font-weight: bold;
+    }
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .transaction-item {
+      border-left: 4px solid;
+      margin-bottom: 10px;
+    }
+    .transaction-deposito {
+      border-left-color: #28a745;
+    }
+    .transaction-retiro {
+      border-left-color: #dc3545;
+    }
+    .transaction-transferencia {
+      border-left-color: #007bff;
+    }
+    .transaction-compra {
+      border-left-color: #ffc107;
+    }
+    .transaction-monto {
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+    .transaction-fecha {
+      font-size: 0.85em;
+      color: #6c757d;
+    }
+    .empty-state {
+      text-align: center;
+      padding: 40px 20px;
+      color: #6c757d;
+    }
+  </style>
+</head>
+<body>
+  <!-- Barra de Navegación -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="menu.html">
+        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE5IDE0VjIwSDUuMDAwMDFWMTBNNS4wMDAwMSAxMEgxOU0xMiAxNUwxMiA5TTEyIDlNOSAxMk0xMiA5TDE1IDEyIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K" width="24" height="24" class="d-inline-block align-top" alt="">
+        Alke Wallet
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="menu.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="deposit.html">Depositar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sendmoney.html">Enviar Dinero</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="retiros.html">Retirar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="transactions.html">Movimientos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-warning" href="index.html">Cerrar Sesión</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h2 class="mb-4">Últimos Movimientos</h2>
+    
+    <!-- Resumen de Saldo -->
+    <div class="card mb-4">
+      <div class="card-body">
+        <h5 class="card-title">Saldo Actual</h5>
+        <h3 id="currentBalance" class="text-success">$0</h3>
+      </div>
+    </div>
+
+    <!-- Filtros -->
+    <div class="card mb-4">
+      <div class="card-body">
+        <h5 class="card-title">Filtrar Movimientos</h5>
+        <div class="form-group">
+          <label for="filterType">Tipo de movimiento:</label>
+          <select class="form-control" id="filterType">
+            <option value="todos">Todos los movimientos</option>
+            <option value="deposito">Depósitos</option>
+            <option value="retiro">Retiros</option>
+            <option value="transferencia">Transferencias</option>
+            <option value="compra">Compras</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lista de Movimientos -->
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Historial de Transacciones</h5>
+        <div id="transactionsList">
+          <!-- Las transacciones se cargarán aquí dinámicamente -->
+        </div>
+        <div id="emptyState" class="empty-state" style="display: none;">
+          <p>No hay movimientos para mostrar</p>
+          <p class="text-muted">Realiza tu primera transacción para verla aquí</p>
+        </div>
+      </div>
+    </div>
+
+    <a href="menu.html" class="btn btn-secondary mt-4">Volver al Menú Principal</a>
+  </div>
+
+  <!-- Script de Bootstrap -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+<script>
+$(document).ready(function() {
+  // Mostrar saldo actual
+  const balance = localStorage.getItem("balance") || 0;
+  $('#currentBalance').text("$" + balance);
+
+  // Función para procesar y mostrar transacciones
+  function cargarTransacciones(filtro = "todos") {
+    const transactionsList = $('#transactionsList');
+    const emptyState = $('#emptyState');
+    
+    // Limpiar lista
+    transactionsList.empty();
+    
+    // Obtener transacciones del localStorage
+    const movs = JSON.parse(localStorage.getItem("transactions") || "[]");
+    
+    // Si no hay movimientos, mostrar estado vacío
+    if (movs.length === 0) {
+      transactionsList.hide();
+      emptyState.show();
+      return;
+    }
+    
+    // Mostrar lista
+    transactionsList.show();
+    emptyState.hide();
+    
+    // Procesar cada movimiento
+    movs.forEach((mov, index) => {
+      const transactionItem = crearItemTransaccion(mov, index);
+      
+      // Aplicar filtro
+      if (filtro === "todos" || transactionItem.tipo === filtro) {
+        transactionsList.append(transactionItem.element);
+      }
+    });
+    
+    // Si después de filtrar no hay elementos, mostrar estado vacío
+    if (transactionsList.children().length === 0) {
+      transactionsList.hide();
+      emptyState.show();
+    }
+  }
+
+  // Función para crear un item de transacción
+  function crearItemTransaccion(mov, index) {
+    const div = $('<div class="transaction-item p-3"></div>');
+    let tipo = "";
+    let icono = "";
+    let claseColor = "";
+    
+    // Determinar tipo de transacción
+    if (mov.includes("Depósito")) {
+      tipo = "deposito";
+      icono = "⬆️";
+      claseColor = "transaction-deposito";
+    } else if (mov.includes("Retiro")) {
+      tipo = "retiro";
+      icono = "⬇️";
+      claseColor = "transaction-retiro";
+    } else if (mov.includes("Envío de dinero")) {
+      tipo = "transferencia";
+      icono = "↗️";
+      claseColor = "transaction-transferencia";
+    } else if (mov.includes("Compra")) {
+      tipo = "compra";
+      icono = "🛒";
+      claseColor = "transaction-compra";
+    } else {
+      tipo = "otro";
+      icono = "💳";
+      claseColor = "transaction-deposito";
+    }
+    
+    // Extraer monto
+    const montoMatch = mov.match(/([+-]?\$[\d,]+\.?\d*)/);
+    const monto = montoMatch ? montoMatch[0] : "";
+    
+    // Crear fecha simulada (más reciente primero)
+    const fecha = new Date();
+    fecha.setDate(fecha.getDate() - index);
+    const fechaFormateada = fecha.toLocaleDateString('es-ES', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric'
+    });
+    
+    // Construir el elemento
+    div.addClass(claseColor);
+    div.html(`
+      <div class="d-flex justify-content-between align-items-start">
+        <div class="flex-grow-1">
+          <div class="d-flex align-items-center mb-1">
+            <span class="me-2">${icono}</span>
+            <strong>${mov.replace(/([+-]?\$[\d,]+\.?\d*)/, '').trim()}</strong>
+          </div>
+          <small class="transaction-fecha">${fechaFormateada}</small>
+        </div>
+        <div class="transaction-monto ${monto.includes('+') ? 'text-success' : 'text-danger'}">
+          ${monto}
+        </div>
+      </div>
+    `);
+    
+    return { element: div, tipo: tipo };
+  }
+
+  // Cargar transacciones al iniciar
+  cargarTransacciones();
+
+  // Filtrar transacciones cuando cambia la selección
+  $('#filterType').change(function() {
+    const filtro = $(this).val();
+    cargarTransacciones(filtro);
+  });
+});
+</script>
+</html>

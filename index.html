@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Wallet - Login</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body {
+      padding: 20px;
+      padding-top: 80px; /* Espacio para la barra fija */
+    }
+
+    .container {
+      max-width: 450px;
+      margin: 0 auto;
+    }
+    
+    .alert {
+      display: none;
+    }
+    
+    .navbar-brand {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <!-- Barra de Navegación -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE5IDE0VjIwSDUuMDAwMDFWMTBNNS4wMDAwMSAxMEgxOU0xMiAxNUwxMiA5TTEyIDlMOSAxMk0xMiA5TDE1IDEyIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K" width="24" height="24" class="d-inline-block align-top" alt="">
+        Alke Wallet
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Iniciar Sesión</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about">Acerca de</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h2>Inicio de sesión</h2>
+    <div id="alert-container"></div>
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" id="email" placeholder="Enter email">
+      </div>
+      <div class="form-group">
+        <label for="password">Contraseña:</label>
+        <input type="password" class="form-control" id="password" placeholder="Enter password">
+      </div>
+      <button type="submit" class="btn btn-success btn-block">Iniciar sesion</button>
+    </form>
+  </div>
+
+  <!-- Script de Bootstrap para funcionalidad del toggle -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+<script>
+$(document).ready(function() {
+  $('#loginForm').submit(function(e) {
+    e.preventDefault();
+
+    const email = $('#email').val();
+    const pass = $('#password').val();
+
+    if ((email === "demo@mail.com" && pass === "1234") || (email === "prueba@gmail.com" && pass === "1234")) {
+      $('#alert-container').html('<div class="alert alert-success alert-dismissible fade show" role="alert">Inicio de sesión exitoso<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+      
+      if (!localStorage.getItem("balance")) {
+        localStorage.setItem("balance", 60000);
+      }
+
+      setTimeout(function() {
+        window.location.href = "menu.html";
+      }, 1500);
+    } else {
+      $('#alert-container').html('<div class="alert alert-danger alert-dismissible fade show" role="alert">Credenciales incorrectas<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+    }
+  });
+});
+</script>
+</html>

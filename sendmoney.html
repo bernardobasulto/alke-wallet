@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Wallet - Enviar Dinero</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body {
+      padding: 20px;
+      padding-top: 80px;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    
+    .list-group-item.active {
+      background-color: #007bff;
+      color: white;
+    }
+    
+    #addContactForm {
+      display: none;
+      margin-top: 15px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .navbar-brand {
+      font-weight: bold;
+    }
+    #sendMoneyBtn {
+      display: none;
+      margin-top: 15px;
+    }
+    
+    #confirmationMessage {
+      display: none;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Barra de Navegación -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="menu.html">
+      <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE5IDE0VjIwSDUuMDAwMDFWMTBNNS4wMDAwMSAxMEgxOU0xMiAxNUwxMiA5TTEyIDlNOSAxMk0xMiA5TDE1IDEyIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K" width="24" height="24" class="d-inline-block align-top" alt="">
+      Alke Wallet
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="menu.html">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <!-- Cambia a 'active' según la página -->
+          <a class="nav-link active" href="deposit.html">Depositar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="sendmoney.html">Enviar Dinero</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="retiros.html">Retirar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="transactions.html">Movimientos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-warning" href="index.html">Cerrar Sesión</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  <div class="container">
+    <h2>Enviar Dinero</h2>
+    <div id="confirmationMessage" class="alert alert-success"></div>
+    
+    <form id="searchForm">
+      <div class="form-group">
+        <label for="searchContact">Buscar en la agenda de transferencias:</label>
+        <input type="text" class="form-control" id="searchContact" placeholder="Search contact">
+      </div>
+      <button type="submit" class="btn btn-primary">Buscar</button>
+    </form>
+    
+    <h3>Contactos</h3>
+    <ul id="contactList" class="list-group"></ul>
+    
+    <button id="addContactBtn" class="btn btn-primary mt-3">Agregar Contacto</button>
+    
+    <div id="addContactForm">
+      <h4>Nuevo Contacto</h4>
+      <form id="newContactForm">
+        <div class="form-group">
+          <label for="contactName">Nombre y apellido:</label>
+          <input type="text" class="form-control" id="contactName" required>
+        </div>
+        <div class="form-group">
+          <label for="contactCBU">CBU:</label>
+          <input type="text" class="form-control" id="contactCBU" required pattern="[0-9]{22}" title="El CBU debe tener 22 dígitos">
+        </div>
+        <div class="form-group">
+          <label for="contactAlias">Alias:</label>
+          <input type="text" class="form-control" id="contactAlias" required>
+        </div>
+        <div class="form-group">
+          <label for="contactBank">Banco:</label>
+          <input type="text" class="form-control" id="contactBank" required>
+        </div>
+        <button type="submit" class="btn btn-success">Guardar Contacto</button>
+        <button type="button" id="cancelContactBtn" class="btn btn-secondary">Cancelar</button>
+      </form>
+    </div>
+    
+    <button id="sendMoneyBtn" class="btn btn-primary">Enviar Dinero</button>
+    <a href="menu.html" class="btn btn-secondary">Volver al Menú Principal</a>
+  </div>
+</body>
+<script>
+$(document).ready(function() {
+  const contactList = $('#contactList');
+  let contacts = JSON.parse(localStorage.getItem("contacts") || "[]");
+  let selectedContact = null;
+
+  // Cargar contactos previos
+  contacts.forEach(c => addContactToUI(c));
+
+  // Mostrar/ocultar formulario de contacto
+  $('#addContactBtn').click(function() {
+    $('#addContactForm').show();
+    $(this).hide();
+  });
+
+  $('#cancelContactBtn').click(function() {
+    $('#addContactForm').hide();
+    $('#addContactBtn').show();
+    $('#newContactForm')[0].reset();
+  });
+
+  // Validar y guardar nuevo contacto
+  $('#newContactForm').submit(function(e) {
+    e.preventDefault();
+
+    const nombre = $('#contactName').val();
+    const cbu = $('#contactCBU').val();
+    const alias = $('#contactAlias').val();
+    const banco = $('#contactBank').val();
+
+    // Validación básica
+    if (!nombre || !cbu || !alias || !banco) {
+      alert("Todos los campos son obligatorios");
+      return;
+    }
+
+    if (cbu.length !== 22 || !/^\d+$/.test(cbu)) {
+      alert("El CBU debe tener exactamente 22 dígitos");
+      return;
+    }
+
+    const newContact = { nombre, cbu, alias, banco };
+    contacts.push(newContact);
+    localStorage.setItem("contacts", JSON.stringify(contacts));
+
+    addContactToUI(newContact);
+    $('#newContactForm')[0].reset();
+    $('#addContactForm').hide();
+    $('#addContactBtn').show();
+  });
+
+  // Búsqueda de contactos
+  $('#searchForm').submit(function(e) {
+    e.preventDefault();
+    const searchTerm = $('#searchContact').val().toLowerCase();
+    
+    $('#contactList li').each(function() {
+      const contactText = $(this).text().toLowerCase();
+      if (contactText.includes(searchTerm)) {
+        $(this).show();
+      } else {
+        $(this).hide();
+      }
+    });
+  });
+
+  // Mostrar contacto en UI
+  function addContactToUI(contact) {
+    const li = $('<li class="list-group-item"></li>');
+    li.text(`${contact.nombre} | CBU: ${contact.cbu} | Alias: ${contact.alias} | Banco: ${contact.banco}`);
+    li.click(function() {
+      selectContact(li);
+    });
+    contactList.append(li);
+  }
+
+  // Selección visual del contacto
+  function selectContact(li) {
+    if (selectedContact) selectedContact.removeClass('active');
+    selectedContact = li;
+    li.addClass('active');
+    $('#sendMoneyBtn').show();
+  }
+
+  // Enviar dinero
+  $('#sendMoneyBtn').click(function(e) {
+    e.preventDefault();
+
+    if (!selectedContact) {
+      alert("Seleccione un contacto");
+      return;
+    }
+
+    const monto = prompt("Monto a enviar:");
+
+    if (!monto || Number(monto) <= 0) {
+      alert("Monto inválido");
+      return;
+    }
+
+    let saldo = Number(localStorage.getItem("balance"));
+    saldo -= Number(monto);
+
+    if (saldo < 0) {
+      alert("Saldo insuficiente");
+      return;
+    }
+
+    localStorage.setItem("balance", saldo);
+
+    // Guardar movimiento (reemplazar esta parte)
+const movs = JSON.parse(localStorage.getItem("transactions") || "[]");
+movs.unshift(`Envío de dinero -$${monto} a ${selectedContact.text()}`);
+localStorage.setItem("transactions", JSON.stringify(movs));
+
+    // Mostrar mensaje de confirmación
+    $('#confirmationMessage').text(`Envío de $${monto} realizado con éxito. Nuevo saldo: $${saldo}`).show();
+
+    // Ocultar después de 3 segundos
+    setTimeout(function() {
+      $('#confirmationMessage').hide();
+    }, 3000);
+  });
+});
+</script>
+</html>

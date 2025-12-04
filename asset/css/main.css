@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+img{
+    /* Hacemos que las imágenes sean responsivas por defecto */
+    max-width: 100%; 
+    display: block;
+}
+
+/* Estilos para las imágenes del carrusel */
+.carousel-item img {
+    height: 50vh; /* 50% de la altura de la ventana */
+    object-fit: cover; /* Cubre el espacio sin deformar la imagen */
+    width: 100%; /* Asegura que ocupe todo el ancho */
+}
+
+/* Estilos para las imágenes de las tarjetas */
+.card-img-top {
+    height: 200px; /* Altura fija para las imágenes de las tarjetas */
+    object-fit: cover; /* Cubre el espacio sin deformar la imagen */
+}
+.aviso {
+    height: 24px; /* Tamaño pequeño para icono */
+    width: 24px; /* Tamaño pequeño para icono */
+    object-fit: cover; /* Cubre el espacio sin deformar la imagen */
+    border-radius: 4px; /* Esquinas ligeramente redondeadas */
+}

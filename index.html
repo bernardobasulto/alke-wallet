@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido a Alke Wallet</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/asset/css/">
+    <style>
+        :root {
+            --primary-blue: #1E3A8A;
+            --accent-yellow: #F59E0B;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* Contenedor del Video de Fondo */
+        .video-background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .video-background-container video {
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+
+        /* Capa overlay para mantener tu estilo original de fondo pero sobre el video */
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(243, 244, 247, 0.7) 100%);
+            z-index: 0;
+        }
+
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+            background: transparent;
+            /* Quitamos el background sólido para ver el video */
+        }
+
+        .btn-start {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-start:hover {
+            background-color: #162d6b;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(30, 58, 138, 0.2);
+        }
+
+        .wallet-logo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+        }
+
+        nav,
+        footer {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="video-background-container">
+        <video autoplay muted loop playsinline>
+            <source src="/asset/video/azul10243082-hd_1920_1080_25fps.mp4" type="video/mp4">
+            Tu navegador no soporta videos.
+        </video>
+    </div>
+    <div class="video-overlay"></div>
+
+    <nav class="navbar navbar-light bg-transparent pt-4">
+        <div class="container">
+            <a class="navbar-brand wallet-logo" href="#">
+                Alke<span class="text-warning">Wallet</span>
+            </a>
+        </div>
+    </nav>
+
+    <section class="hero-section text-center text-lg-start">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-3 fw-bold mb-4" style="color: #111827;">
+                        Tu dinero, <br>
+                        <span style="color: var(--primary-blue);">seguro y simple.</span>
+                    </h1>
+                    <p class="lead text-muted mb-5">
+                        Administra tus activos financieros, realiza transferencias y gestiona tus depósitos con Alke
+                        Wallet. La solución fintech diseñada para ti.
+                    </p>
+
+                    <div class="d-flex flex-column flex-sm-row justify-content-center justify-content-lg-start gap-3">
+                        <a href="login.html" class="btn-start">Iniciar sesión</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 d-none d-lg-block">
+                    <img src="/asset/img/walletIndex.png" alt="Wallet Illustration" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-4 text-center border-top" style="background: rgba(255,255,255,0.8);">
+        <p class="text-muted small mb-0">&copy; 2025 Alke Wallet - Proyecto Módulo 2 - FullStack Python - Bernardo
+            Basulto </p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

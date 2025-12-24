@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alke Wallet - Depositar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/asset/css/style.css">
+</head>
+<body class="dashboard-page">
+    <div class="d-lg-none p-3">
+        <button class="btn btn-warning text-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+            <i class="bi bi-list fs-4"></i>
+        </button>
+    </div>
+
+    <div class="wrapper">
+        <nav class="sidebar">
+            <div class="mb-5 d-flex align-items-center">
+                <h4 class="fw-bold mb-0 text-dark">
+                    <i class="bi bi-lightning-charge-fill text-warning"></i> Alka Wallet
+                </h4>
+            </div>
+
+            <div class="nav flex-column">
+                <a href="menu.html" class="nav-link-custom"><i class="bi bi-grid-fill px-2"></i> Dashboard</a>
+                <a href="transactions.html" class="nav-link-custom"><i class="bi bi-receipt px-2"></i> Transacciones</a>
+                <a href="sendmoney.html" class="nav-link-custom"><i class="bi bi-send-fill px-2"></i> Enviar Dinero</a>
+                <a href="deposit.html" class="nav-link-custom active"><i class="bi bi-cash-stack px-2"></i> Recibir Dinero</a>
+                <a href="#" class="nav-link-custom"><i class="bi bi-wallet2 px-2"></i> Billetera</a>
+                <a href="#" class="nav-link-custom"><i class="bi bi-person-circle px-2"></i> Mi Perfil</a>
+                <hr>
+                <a href="#" class="nav-link-custom mt-auto"><i class="bi bi-gear-fill"></i> Configuración</a>
+                <a href="login.html" class="nav-link-custom text-danger mt-5"><i class="bi bi-box-arrow-right"></i>
+                    Salir</a>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <div class="container-fluid">
+                <h2 class="fw-bold mb-4">Depositar Fondos</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="bento-card">
+                            <form action="menu2.html">
+                                <div class="mb-4 text-start">
+                                    <label class="form-label fw-bold">Monto a depositar</label>
+                                    <div class="input-group input-group-lg">
+                                        <span class="input-group-text border-0">$</span>
+                                        <input type="number" class="form-control border-0 bg-light" placeholder="0.00" required>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-warning w-100 py-3 text-white fw-bold shadow-sm">Confirmar Depósito</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileMenu">
+        <div class="offcanvas-header border-bottom">
+            <h5 class="fw-bold mb-0"><i class="bi bi-lightning-charge-fill text-warning"></i> Alke Wallet</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body p-4">
+            <div class="nav flex-column">
+                <a href="menu2.html" class="nav-link-custom mb-2"><i class="bi bi-grid-fill"></i> Dashboard</a>
+                <a href="deposit.html" class="nav-link-custom active mb-2"><i class="bi bi-plus-circle"></i> Depositar</a>
+                <a href="sendmoney.html" class="nav-link-custom mb-2"><i class="bi bi-send"></i> Enviar</a>
+                <a href="transactions.html" class="nav-link-custom mb-2"><i class="bi bi-arrow-down-up"></i> Historial</a>
+                <hr>
+                <a href="login.html" class="nav-link-custom text-danger"><i class="bi bi-box-arrow-right"></i> Salir</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

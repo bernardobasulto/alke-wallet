@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Admin Full Interface</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --bg-main: #F3F4F7;
+            --card-bg: #FFFFFF;
+            --accent-yellow: #F59E0B;
+            --text-dark: #1F2937;
+            --sidebar-width: 260px;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* --- Estructura Layout --- */
+        .wrapper {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* --- Menú Lateral (Sidebar) --- */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: var(--white);
+            background-color: white;
+            border-right: 1px solid #E5E7EB;
+            padding: 24px;
+            position: fixed;
+            height: 100vh;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .nav-link-custom {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            border-radius: 12px;
+            color: #6B7280;
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 8px;
+            transition: 0.2s;
+        }
+
+        .nav-link-custom:hover, .nav-link-custom.active {
+            background-color: #FFFBEB;
+            color: var(--accent-yellow);
+        }
+
+        .nav-link-custom i { margin-right: 12px; font-size: 1.2rem; }
+
+        /* --- Contenido Principal --- */
+        .main-content {
+            flex-grow: 1;
+            margin-left: var(--sidebar-width);
+            padding: 30px;
+            width: calc(100% - var(--sidebar-width));
+        }
+
+        /* --- Componentes --- */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .search-bar {
+            background: white;
+            border-radius: 50px;
+            padding: 10px 25px;
+            border: 1px solid #E5E7EB;
+            width: 350px;
+            outline: none;
+        }
+
+        .bento-card {
+            background: var(--card-bg);
+            border-radius: 28px;
+            padding: 25px;
+            height: 100%;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.02);
+            border: none;
+        }
+
+        .price-tag { font-size: 1.8rem; font-weight: 800; color: var(--accent-yellow); }
+
+        .visa-card {
+            background: linear-gradient(135deg, #111827 0%, #374151 100%);
+            color: white;
+            border-radius: 20px;
+            padding: 20px;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 992px) {
+            .sidebar { transform: translateX(-100%); }
+            .main-content { margin-left: 0; width: 100%; padding: 20px; }
+            .search-bar { width: 100%; margin-top: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+
+    <nav class="sidebar">
+        <div class="mb-5 d-flex align-items-center">
+            <h4 class="fw-bold mb-0 text-dark">
+                <i class="bi bi-lightning-charge-fill text-warning"></i> CryptoAdmin
+            </h4>
+        </div>
+        
+        <div class="nav flex-column">
+            <a href="#" class="nav-link-custom active"><i class="bi bi-grid-fill"></i> Dashboard</a>
+            <a href="#" class="nav-link-custom"><i class="bi bi-wallet2"></i> Billetera</a>
+            <a href="#" class="nav-link-custom"><i class="bi bi-arrow-down-up"></i> Transacciones</a>
+            <a href="#" class="nav-link-custom"><i class="bi bi-pie-chart-fill"></i> Estadísticas</a>
+            <a href="#" class="nav-link-custom"><i class="bi bi-person-circle"></i> Mi Perfil</a>
+            <hr>
+            <a href="#" class="nav-link-custom mt-auto"><i class="bi bi-gear-fill"></i> Configuración</a>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        
+        <header class="top-nav flex-wrap">
+            <div class="d-flex align-items-center gap-3">
+                <button class="btn btn-light d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                    <i class="bi bi-list fs-4"></i>
+                </button>
+                <h2 class="fw-bold mb-0">Hola, Admin! 👋</h2>
+            </div>
+
+            <div class="d-none d-lg-block">
+                <input type="text" class="search-bar" placeholder="Buscar activos o facturas...">
+            </div>
+
+            <div class="d-flex gap-3 align-items-center">
+                <button class="btn btn-white bg-white rounded-circle p-2 shadow-sm"><i class="bi bi-bell"></i></button>
+                <button class="btn btn-white bg-white rounded-circle p-2 shadow-sm"><i class="bi bi-envelope"></i></button>
+                <img src="https://ui-avatars.com/api/?name=Admin&background=F59E0B&color=fff" class="rounded-circle" width="45">
+            </div>
+        </header>
+
+        <div class="row g-4">
+            
+            <div class="col-12 col-xl-4">
+                <div class="bento-card">
+                    <div class="d-flex justify-content-between mb-4">
+                        <span class="fw-bold">Tarjeta Principal</span>
+                        <span class="badge bg-light text-dark">Débito</span>
+                    </div>
+                    <div class="visa-card mb-4">
+                        <div class="d-flex justify-content-between mb-4">
+                            <i class="bi bi-chip fs-2 text-warning"></i>
+                            <span class="fw-bold">VISA</span>
+                        </div>
+                        <h4 class="mb-4">**** **** **** 2567</h4>
+                        <div class="d-flex justify-content-between small">
+                            <span>JOHN DOE</span>
+                            <span>12/28</span>
+                        </div>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-dark w-100 rounded-pill py-2">Recibir</button>
+                        <button class="btn btn-light w-100 rounded-pill py-2">Enviar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-xl-4">
+                <div class="row g-4 h-100">
+                    <div class="col-12">
+                        <div class="bento-card">
+                            <small class="text-muted d-block mb-1">Ingresos Totales</small>
+                            <div class="price-tag">$20,425.50</div>
+                            <div class="text-success small mt-2"><i class="bi bi-graph-up"></i> +12.5% este mes</div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="bento-card">
+                            <small class="text-muted d-block mb-1">Inversiones Activas</small>
+                            <div class="price-tag">$8,120.00</div>
+                            <div class="text-warning small mt-2"><i class="bi bi-clock"></i> 3 pendientes</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-xl-4">
+                <div class="bento-card d-flex flex-column align-items-center justify-content-center text-center">
+                    <div class="mb-3" style="width: 100px; height: 100px; border-radius: 50%; border: 10px solid #F59E0B; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 900;">
+                        65%
+                    </div>
+                    <h5 class="fw-bold">Meta de Ahorro</h5>
+                    <p class="text-muted small">Vas por buen camino, ¡sigue así!</p>
+                    <button class="btn btn-warning w-100 mt-3 rounded-pill">Ver detalles</button>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="bento-card">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="fw-bold mb-0">Actividad Reciente</h5>
+                        <button class="btn btn-sm btn-light">Ver todo</button>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Concepto</th>
+                                    <th>Fecha</th>
+                                    <th>Monto</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><i class="bi bi-cart-fill text-primary me-2"></i> Amazon</td>
+                                    <td>22 Dic, 2023</td>
+                                    <td class="fw-bold">-$85.00</td>
+                                    <td><span class="badge bg-success-subtle text-success">Completado</span></td>
+                                </tr>
+                                <tr>
+                                    <td><i class="bi bi-lightning-fill text-warning me-2"></i> Pago Luz</td>
+                                    <td>20 Dic, 2023</td>
+                                    <td class="fw-bold">-$120.50</td>
+                                    <td><span class="badge bg-warning-subtle text-warning">Pendiente</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+</div>
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="mobileMenu">
+    <div class="offcanvas-header">
+        <h5 class="fw-bold">Menú</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div class="nav flex-column">
+            <a href="#" class="nav-link-custom active">Dashboard</a>
+            <a href="#" class="nav-link-custom">Billetera</a>
+            <a href="#" class="nav-link-custom">Transacciones</a>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -41,60 +41,74 @@
         </nav>
 
     <main class="main-content">
-        <div class="container-fluid">
-            <h2 class="fw-bold mb-4">Enviar Dinero</h2>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="bento-card">
-                        <h4 class="fw-bold mb-3">Usuarios Frecuentes</h4>
-                        <div class="list-group mb-4">
-                            <div class="list-group-item d-flex justify-content-between align-items-center">
-                                <div>
-                                    <strong>Juan Pérez</strong><br>
-                                    <small>juan.perez@example.com</small>
-                                </div>
-                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#sendModalJuan">Enviar</button>
+            <div class="container-fluid">
+                <h2 class="fw-bold mb-4">Enviar Dinero</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="bento-card p-4">
+                            <!-- Lista de contactos frecuentes -->
+                            <h4 class="fw-bold mb-3">Contactos Frecuentes</h4>
+                            <div class="list-group mb-4">
+                                <a href="#" class="list-group-item list-group-item-action contact-item d-flex align-items-center">
+                                    <div class="contact-avatar me-3">JP</div>
+                                    <div class="flex-grow-1">
+                                        <strong>Juan Pérez</strong>
+                                        <small class="text-muted d-block">juan.perez@example.com</small>
+                                    </div>
+                                    <button type="button" class="btn btn-primary btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#sendModalJuan">
+                                        Enviar
+                                    </button>
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action contact-item d-flex align-items-center">
+                                    <div class="contact-avatar me-3">ML</div>
+                                    <div class="flex-grow-1">
+                                        <strong>María López</strong>
+                                        <small class="text-muted d-block">maria.lopez@example.com</small>
+                                    </div>
+                                    <button type="button" class="btn btn-primary btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#sendModalMaria">
+                                        Enviar
+                                    </button>
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action contact-item d-flex align-items-center">
+                                    <div class="contact-avatar me-3">CR</div>
+                                    <div class="flex-grow-1">
+                                        <strong>Carlos Ramírez</strong>
+                                        <small class="text-muted d-block">carlos.ramirez@example.com</small>
+                                    </div>
+                                    <button type="button" class="btn btn-primary btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#sendModalCarlos">
+                                        Enviar
+                                    </button>
+                                </a>
                             </div>
-                            <div class="list-group-item d-flex justify-content-between align-items-center">
-                                <div>
-                                    <strong>María López</strong><br>
-                                    <small>maria.lopez@example.com</small>
-                                </div>
-                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#sendModalMaria">Enviar</button>
-                            </div>
-                            <div class="list-group-item d-flex justify-content-between align-items-center">
-                                <div>
-                                    <strong>Carlos Ramírez</strong><br>
-                                    <small>carlos.ramirez@example.com</small>
-                                </div>
-                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#sendModalCarlos">Enviar</button>
-                            </div>
-                        </div>
-                        <button type="button" class="btn btn-secondary w-100 mb-4" data-bs-toggle="modal" data-bs-target="#addUserModal">Agregar Usuario</button>
 
-                        <h4 class="fw-bold mb-3">Enviar a Nuevo Destinatario</h4>
-                        <form action="menu2.html">
-                            <div class="mb-4">
-                                <label class="form-label fw-bold">Destinatario</label>
-                                <input type="text" class="form-control border-0 bg-light"
-                                    placeholder="Nombre o correo electrónico" required>
-                            </div>
-                            <div class="mb-4">
-                                <label class="form-label fw-bold">Monto a enviar</label>
-                                <div class="input-group input-group-lg">
-                                    <span class="input-group-text border-0">$</span>
-                                    <input type="number" class="form-control border-0 bg-light" placeholder="0.00"
-                                        required>
+                            <!-- Botón para agregar nuevo contacto -->
+                            <button type="button" class="btn btn-outline-primary w-100 mb-4" data-bs-toggle="modal" data-bs-target="#addUserModal">
+                                <i class="bi bi-person-plus me-2"></i> Agregar Contacto
+                            </button>
+
+                            <!-- Formulario para envío rápido (no contacto) -->
+                            <h5 class="fw-bold mb-3">Enviar a nuevo destinatario</h5>
+                            <form action="menu2.html">
+                                <div class="mb-3">
+                                    <label class="form-label fw-bold">Nombre o correo</label>
+                                    <input type="text" class="form-control bg-light border-0" placeholder="Ej: ana.gomez@example.com" required>
                                 </div>
-                            </div>
-                            <button type="submit" class="btn btn-primary w-100 py-3 fw-bold shadow-sm"
-                                style="background-color: var(--primary-blue);">Realizar Transferencia</button>
-                        </form>
+                                <div class="mb-4">
+                                    <label class="form-label fw-bold">Monto</label>
+                                    <div class="input-group input-group-lg">
+                                        <span class="input-group-text border-0">$</span>
+                                        <input type="number" class="form-control border-0 bg-light" placeholder="0.00" required min="1">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100 py-3 fw-bold shadow-sm" style="background-color: var(--primary-blue);">
+                                    Enviar Dinero
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </main>
+        </main>
     </div>
     <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileMenu">
         <div class="offcanvas-header border-bottom">
@@ -122,6 +136,39 @@
                 <a href="#" class="nav-link-custom mt-auto"><i class="bi bi-gear-fill"></i> Configuración</a>
                 <a href="login.html" class="nav-link-custom text-danger mt-5"><i class="bi bi-box-arrow-right"></i>
                     Salir</a>
+            </div>
+        </div>
+    </div>
+<!-- Modal: Agregar Nuevo Contacto -->
+    <div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addUserModalLabel">Agregar Nuevo Contacto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addContactForm">
+                        <div class="mb-3">
+                            <label for="newContactName" class="form-label">Nombre completo</label>
+                            <input type="text" class="form-control" id="newContactName" placeholder="Ej: Ana Gómez" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="newContactEmail" class="form-label">Correo electrónico</label>
+                            <input type="email" class="form-control" id="newContactEmail" placeholder="ana.gomez@example.com" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="newContactPhone" class="form-label">Teléfono (opcional)</label>
+                            <input type="tel" class="form-control" id="newContactPhone" placeholder="+56 9 1234 5678">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+                        <i class="bi bi-check-lg me-2"></i> Agregar Contacto
+                    </button>
+                </div>
             </div>
         </div>
     </div>

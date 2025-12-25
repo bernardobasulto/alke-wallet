@@ -2,10 +2,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const cards = document.querySelectorAll('.credit-card');
     const indicators = document.querySelectorAll('.card-indicator');
     const cardCounter = document.getElementById('cardCounter');
-    const limitiDisponible = document.getElementById('limiteDisponible');
+    const limiteDisponible = document.getElementById('limiteDisponible');
     const deudaActual = document.getElementById('deudaActual');
     
-    limitiDisponible.textContent = '$5.000.000';
+    limiteDisponible.textContent = '$5.000.000';
     deudaActual.textContent = '-$500.000';
     
     

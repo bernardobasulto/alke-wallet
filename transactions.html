@@ -12,7 +12,8 @@
 
 <body class="dashboard-page">
     <div class="d-lg-none p-3">
-        <button class="btn btn-success text-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+        <button class="btn btn-success text-white" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#mobileMenu">
             <i class="bi bi-list fs-4"></i>
         </button>
     </div>
@@ -142,15 +143,26 @@
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
         </div>
         <div class="offcanvas-body p-4">
+            <div class="p-3 mb-4 rounded-4 text-white" style="background: var(--primary-blue);">
+                <small class="opacity-75">Saldo Disponible</small>
+                <h2 class="fw-bold mb-0" id="mobileMenuBalance">$22.000</h2>
+                <hr class="opacity-25">
+                <div class="d-flex justify-content-between small">
+                    <span>Alke Wallet Card</span>
+                    <i class="bi bi-visa fs-4"></i>
+                </div>
+            </div>
             <div class="nav flex-column">
-                <a href="menu2.html" class="nav-link-custom mb-2"><i class="bi bi-grid-fill"></i> Dashboard</a>
-                <a href="deposit.html" class="nav-link-custom active mb-2"><i class="bi bi-plus-circle"></i>
-                    Depositar</a>
-                <a href="sendmoney.html" class="nav-link-custom mb-2"><i class="bi bi-send"></i> Enviar</a>
-                <a href="transactions.html" class="nav-link-custom mb-2"><i class="bi bi-arrow-down-up"></i>
-                    Historial</a>
+                <a href="menu.html" class="nav-link-custom"><i class="bi bi-grid-fill px-2"></i> Dashboard</a>
+                <a href="transactions.html" class="nav-link-custom active"><i class="bi bi-receipt px-2"></i> Transacciones</a>
+                <a href="sendmoney.html" class="nav-link-custom"><i class="bi bi-send-fill px-2"></i> Enviar Dinero</a>
+                <a href="deposit.html" class="nav-link-custom"><i class="bi bi-cash-stack px-2"></i> Recibir Dinero</a>
+                <a href="#" class="nav-link-custom"><i class="bi bi-wallet2 px-2"></i> Billetera</a>
+                <a href="#" class="nav-link-custom"><i class="bi bi-person-circle px-2"></i> Mi Perfil</a>
                 <hr>
-                <a href="login.html" class="nav-link-custom text-danger"><i class="bi bi-box-arrow-right"></i> Salir</a>
+                <a href="#" class="nav-link-custom mt-auto"><i class="bi bi-gear-fill"></i> Configuración</a>
+                <a href="login.html" class="nav-link-custom text-danger mt-5"><i class="bi bi-box-arrow-right"></i>
+                    Salir</a>
             </div>
         </div>
     </div>

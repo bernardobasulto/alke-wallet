@@ -32,8 +32,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 limiteDisponible.textContent = '$8.500.000';
                 deudaActual.textContent = '-$654.684';
             } else if (cardIndex === 2) { // Tarjeta 3
-                limiteDisponible.textContent = '$2.000.000';
-                deudaActual.textContent = '-$1.200.000';
+                limiteDisponible.textContent = '$350.000';
+                deudaActual.textContent = '-$185.000';
             }
             
             // Actualizar contador

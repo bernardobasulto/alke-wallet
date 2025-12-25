@@ -291,7 +291,8 @@
 
                             <div class="row g-2 mb-4">
                                 <div class="col-4 text-center">
-                                    <a href="sendmoney.html" class="text-decoration-none">
+                                    <a href="sendmoney.html" class="text-decoration-none" data-bs-toggle="modal"
+                                        data-bs-target="#sendModalMaria">
                                         <div class="p-3 border rounded-3 bg-white hover-card">
                                             <img src="https://ui-avatars.com/api/?name=Maria+Garcia&background=007bff&color=fff"
                                                 class="rounded-circle mb-2" width="50">
@@ -301,7 +302,8 @@
                                     </a>
                                 </div>
                                 <div class="col-4 text-center">
-                                    <a href="sendmoney.html" class="text-decoration-none">
+                                    <a href="sendmoney.html" class="text-decoration-none" data-bs-toggle="modal"
+                                        data-bs-target="#sendModalCarlos">
                                         <div class="p-3 border rounded-3 bg-white hover-card">
                                             <img src="https://ui-avatars.com/api/?name=Carlos+Lopez&background=28a745&color=fff"
                                                 class="rounded-circle mb-2" width="50">
@@ -311,7 +313,8 @@
                                     </a>
                                 </div>
                                 <div class="col-4 text-center">
-                                    <a href="sendmoney.html" class="text-decoration-none">
+                                    <a href="sendmoney.html" class="text-decoration-none" data-bs-toggle="modal"
+                                        data-bs-target="#addUserModal">
                                         <div class="p-3 border rounded-3 bg-light">
                                             <div class="rounded-circle bg-white d-inline-flex align-items-center justify-content-center mb-2 shadow-sm"
                                                 style="width: 50px; height: 50px;">
@@ -538,6 +541,118 @@
                         modal
     ================================================
     -->
+    <!-- Modal para Enviar a María -->
+    <div class="modal fade" id="sendModalMaria" tabindex="-1" aria-labelledby="sendModalMariaLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header border-bottom-0">
+                    <h5 class="modal-title fw-bold" id="sendModalMariaLabel">Enviar Dinero a María López</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="p-3 mb-3 bg-light rounded-3">
+                        <p class="mb-1 text-muted small">Destinatario: <span
+                                class="text-dark fw-medium">maria.lopez@example.com</span></p>
+                        <p class="mb-1 text-muted small">Banco: <span class="text-dark fw-medium">Banco BCI</span></p>
+                        <p class="mb-0 text-muted small">Número de cuenta: <span class="text-dark fw-medium">xxx xxx
+                                456872</span></p>
+                    </div>
+
+                    <form action="menu2.html">
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Monto a enviar</label>
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-text border-0 bg-light">$</span>
+                                <input type="number" class="form-control border-0 bg-light" placeholder="ej: 10000"
+                                    required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 py-3 fw-bold shadow-sm"
+                            style="background-color: var(--primary-blue);">Realizar Transferencia</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="sendModalCarlos" tabindex="-1" aria-labelledby="sendModalCarlosLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header border-bottom-0">
+                    <h5 class="modal-title fw-bold" id="sendModalCarlosLabel">Enviar Dinero a Carlos Ramírez</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="p-3 mb-3 bg-light rounded-3">
+                        <p class="mb-1 text-muted small">Usuario creado el: <span
+                                class="text-dark fw-medium">05/05/2023</span></p>
+                                <p></p>
+                        <p class="mb-1 text-muted small">Nombre: <span
+                                class="text-dark fw-medium">Carlos Ramirez</span></p>
+                        <p class="mb-1 text-muted small">Correo: <span
+                                class="text-dark fw-medium">carlos.ramirez@example.com</span></p>
+                        <p class="mb-1 text-muted small">Banco: <span class="text-dark fw-medium">Banco Estado</span>
+                        </p>
+                        <p class="mb-1 text-muted small">Tipo Cuenta: <span
+                                class="text-dark fw-medium">Cta. Corriente</span></p>
+                        <p class="mb-0 text-muted small">Número de cuenta: <span class="text-dark fw-medium">xxx xxx
+                                987123</span></p>
+                    </div>
+
+                    <form action="menu2.html">
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Monto a enviar</label>
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-text border-0 bg-light">$</span>
+                                <input type="number" class="form-control border-0 bg-light" placeholder="ej: 15000"
+                                    required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 py-3 fw-bold shadow-sm"
+                            style="background-color: var(--primary-blue);">Realizar Transferencia</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Agregar Nuevo Contacto -->
+    <div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addUserModalLabel">Agregar Nuevo Contacto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addContactForm">
+                        <div class="mb-3">
+                            <label for="newContactName" class="form-label">Nombre completo</label>
+                            <input type="text" class="form-control" id="newContactName" placeholder="Ej: Ana Gómez"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="newContactEmail" class="form-label">Correo electrónico</label>
+                            <input type="email" class="form-control" id="newContactEmail"
+                                placeholder="ana.gomez@example.com" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="newContactPhone" class="form-label">Teléfono (opcional)</label>
+                            <input type="tel" class="form-control" id="newContactPhone" placeholder="+56 9 1234 5678">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+                        <i class="bi bi-check-lg me-2"></i> Agregar Contacto
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="modal fade" id="addCardModal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">

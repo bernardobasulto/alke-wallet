@@ -40,34 +40,61 @@
             </div>
         </nav>
 
-        <main class="main-content">
-            <div class="container-fluid">
-                <h2 class="fw-bold mb-4">Enviar Dinero</h2>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="bento-card">
-                            <form action="menu2.html">
-                                <div class="mb-4">
-                                    <label class="form-label fw-bold">Destinatario</label>
-                                    <input type="text" class="form-control border-0 bg-light"
-                                        placeholder="Nombre o correo electrónico" required>
+    <main class="main-content">
+        <div class="container-fluid">
+            <h2 class="fw-bold mb-4">Enviar Dinero</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="bento-card">
+                        <h4 class="fw-bold mb-3">Usuarios Frecuentes</h4>
+                        <div class="list-group mb-4">
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <strong>Juan Pérez</strong><br>
+                                    <small>juan.perez@example.com</small>
                                 </div>
-                                <div class="mb-4">
-                                    <label class="form-label fw-bold">Monto a enviar</label>
-                                    <div class="input-group input-group-lg">
-                                        <span class="input-group-text border-0">$</span>
-                                        <input type="number" class="form-control border-0 bg-light" placeholder="0.00"
-                                            required>
-                                    </div>
+                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#sendModalJuan">Enviar</button>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <strong>María López</strong><br>
+                                    <small>maria.lopez@example.com</small>
                                 </div>
-                                <button type="submit" class="btn btn-primary w-100 py-3 fw-bold shadow-sm"
-                                    style="background-color: var(--primary-blue);">Realizar Transferencia</button>
-                            </form>
+                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#sendModalMaria">Enviar</button>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <strong>Carlos Ramírez</strong><br>
+                                    <small>carlos.ramirez@example.com</small>
+                                </div>
+                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#sendModalCarlos">Enviar</button>
+                            </div>
                         </div>
+                        <button type="button" class="btn btn-secondary w-100 mb-4" data-bs-toggle="modal" data-bs-target="#addUserModal">Agregar Usuario</button>
+
+                        <h4 class="fw-bold mb-3">Enviar a Nuevo Destinatario</h4>
+                        <form action="menu2.html">
+                            <div class="mb-4">
+                                <label class="form-label fw-bold">Destinatario</label>
+                                <input type="text" class="form-control border-0 bg-light"
+                                    placeholder="Nombre o correo electrónico" required>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label fw-bold">Monto a enviar</label>
+                                <div class="input-group input-group-lg">
+                                    <span class="input-group-text border-0">$</span>
+                                    <input type="number" class="form-control border-0 bg-light" placeholder="0.00"
+                                        required>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100 py-3 fw-bold shadow-sm"
+                                style="background-color: var(--primary-blue);">Realizar Transferencia</button>
+                        </form>
                     </div>
                 </div>
             </div>
-        </main>
+        </div>
+    </main>
     </div>
     <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileMenu">
         <div class="offcanvas-header border-bottom">
@@ -98,6 +125,56 @@
             </div>
         </div>
     </div>
+
+<!-- Modal para Enviar a María -->
+<div class="modal fade" id="sendModalMaria" tabindex="-1" aria-labelledby="sendModalMariaLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="sendModalMariaLabel">Enviar Dinero a María López</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Destinatario: maria.lopez@example.com</p>
+                <form action="menu2.html">
+                    <div class="mb-4">
+                        <label class="form-label fw-bold">Monto a enviar</label>
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-text border-0">$</span>
+                            <input type="number" class="form-control border-0 bg-light" placeholder="0.00" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 py-3 fw-bold shadow-sm" style="background-color: var(--primary-blue);">Realizar Transferencia</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para Enviar a Carlos -->
+<div class="modal fade" id="sendModalCarlos" tabindex="-1" aria-labelledby="sendModalCarlosLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="sendModalCarlosLabel">Enviar Dinero a Carlos Ramírez</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Destinatario: carlos.ramirez@example.com</p>
+                <form action="menu2.html">
+                    <div class="mb-4">
+                        <label class="form-label fw-bold">Monto a enviar</label>
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-text border-0">$</span>
+                            <input type="number" class="form-control border-0 bg-light" placeholder="0.00" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 py-3 fw-bold shadow-sm" style="background-color: var(--primary-blue);">Realizar Transferencia</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

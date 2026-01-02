@@ -9,12 +9,12 @@ formLogin.addEventListener("submit", (e) => {
 
     if(email === "prueba@alkawallet.com" && password === "123456"){
          Swal.fire({
-            position: "center",  // Cambiado de "top-end" a "center"
+            position: "center",  
             icon: "success",
             title: "Usuario logueado con éxito",
             showConfirmButton: false,
             timer: 1500,
-            toast: false,  // Asegura que no sea un toast
+            toast: true,  
             timerProgressBar: true,  // Opcional: muestra barra de progreso
             customClass: {
                 popup: 'custom-swal-popup'  // Clase CSS personalizada opcional
@@ -25,12 +25,12 @@ formLogin.addEventListener("submit", (e) => {
         }, 2000);
     }else{
         Swal.fire({
-            position: "center",  // Cambiado de "top-end" a "center"
+            position: "center",  
             icon: "error",
             title: "Datos Incorrectos",
             showConfirmButton: false,
             timer: 1500,
-            toast: false,  // Asegura que no sea un toast
+            toast: true,  
             timerProgressBar: true  // Opcional: muestra barra de progreso
         });
         formLogin.reset();  // Corregí el nombre (era formSesion)

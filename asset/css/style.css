@@ -379,6 +379,11 @@ body {
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
+
+
+
+
+
 /* Para asegurar que siempre esté centrado en móviles */
 @media (max-width: 768px) {
     .swal2-popup {

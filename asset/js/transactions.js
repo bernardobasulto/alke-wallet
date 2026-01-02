@@ -11,7 +11,10 @@ const table = new Tabulator("#tabla-movimientos", {
     layout: "fitColumns",
     height: "400px",
     rowHeight: 38,
-    
+    pagination: "local",       // Paginación en el cliente
+    paginationSize: 6,         // 6 filas por página
+    paginationSizeSelector: [6, 12, 24], // Selector para que el usuario cambie el tamaño
+    paginationCounter: "rows", // Muestra "Mostrando 1-6 de 20 filas"
 
     columns: [
         { title: "ID", field: "id", width: 64 },
@@ -32,3 +35,4 @@ const table = new Tabulator("#tabla-movimientos", {
         { title: "Estado",field: "estado",}
     ]
 });
+

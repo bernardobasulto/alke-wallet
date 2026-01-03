@@ -20,11 +20,11 @@ const table = new Tabulator("#tabla-movimientos", {
     columns: [
         { title: "ID", field: "id", width: 64 },
         { title: "Tipo", field: "tipoTransaccion" },
-        { title: "Origen", field: "origen" },
-        { title: "Destino", field: "destino" },
-        { title: "Cuenta", field: "cuenta", width: 94 },
+        { title: "Origen", field: "origen",responsiva: 2 },
+        { title: "Destino", field: "destino", responsiva:2},
+        { title: "Cuenta", field: "cuenta", width: 94,responsiva:1 },
         { title: "Fecha", field: "fecha" },
-        { title: "Monto", field: "monto",
+        { title: "Monto", field: "monto", responsiva: 0,
             hozAlign: "right",
             formatter: "money",
             formatterParams: {

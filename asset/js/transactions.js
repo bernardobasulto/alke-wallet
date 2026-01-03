@@ -9,6 +9,7 @@ const table = new Tabulator("#tabla-movimientos", {
     data: data,
     theme: "midnight",
     layout: "fitColumns",
+    responsiveLayout: "hide",
     height: "400px",
     rowHeight: 38,
     pagination: "local",       // Paginación en el cliente

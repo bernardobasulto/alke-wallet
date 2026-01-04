@@ -7,9 +7,10 @@
     <title>Alke Wallet - Transacciones</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/tabulator/6.3.1/css/tabulator_midnight.min.css" rel="stylesheet" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
-    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tabulator/6.3.1/css/tabulator_midnight.min.css" rel="stylesheet"
+        integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <link rel="stylesheet" href="./asset/css/style.css">
     <link rel="stylesheet" href="./asset/css/styles2.css">
 </head>
@@ -22,7 +23,7 @@
         </button>
     </div>
     <div class="wrapper">
-        <nav class="sidebar">
+        <nav class="sidebar" data-aos="fade-right">
             <div class="mb-5 d-flex align-items-center">
                 <h4 class="fw-bold mb-0 text-dark">
                     <i class="bi bi-lightning-charge-fill text-warning"></i> Alka Wallet
@@ -48,26 +49,26 @@
         </nav>
 
         <main class="main-content">
-            <div class="container-fluid">
+            <div class="container-fluid" data-aos="zoom-out-right">
                 <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h2 class="fw-bold mb-0">Historial de Transacciones</h2>
-                    <small class="text-muted">Periodo: Diciembre 2025</small>
-                    <div class="d-flex flex-wrap align-items-center gap-1">
+                    <h2 class="fw-bold mb-0 text-light" >Historial de Transacciones</h2>
+                    <small data-aos="zoom-out-right" class="text-muted">Periodo: Diciembre 2025</small>
+                    <div  class="d-flex  flex-wrap align-items-center gap-1">
                         <div class="d-flex justify-content-between align-items-center px-2">
-                            <h6 class="fw-bold mb-0 text-dark">Exportar</h6>
+                            <h6 class="fw-bold mb-0 text-light">Exportar</h6>
                         </div>
-                        <button class="btn btn-outline-dark btn-font-size-md rounded-pill px-4"><i
+                        <button class="btn btn-outline-light btn-font-size-md rounded-pill px-4"><i
                                 class="bi bi-filetype-csv me-2"></i>Csv</button>
-                        <button class="btn btn-outline-dark btn-font-size-md rounded-pill px-4"><i
+                        <button class="btn btn-outline-light btn-font-size-md rounded-pill px-4"><i
                                 class="bi-file-earmark-pdf me-2"></i>PDF</button>
-                        <button class="btn btn-outline-dark btn-font-size-md rounded-pill px-4"><i
+                        <button class="btn btn-outline-light btn-font-size-md rounded-pill px-4"><i
                                 class="bi bi-filetype-xlsx me-2"></i>Excel</button>
                     </div>
                 </div>
 
                 <div class="row mb-4">
                     <div class="col-12">
-                        <div class="bento-card py-3">
+                        <div class="bento-card py-3" data-aos="zoom-in-down">
                             <div class="d-flex gap-2 overflow-auto">
                                 <button class="btn btn-warning text-white rounded-pill px-4 fw-bold">
                                     Todas <span class="ms-1 opacity-75">(12)</span>
@@ -85,36 +86,36 @@
                         </div>
                     </div>
                 </div>
-                
-                <div class="bento-card">
+
+                <div class="bento-card" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine">
                     <div id="tabla-movimientos"></div>
-                    
+
                 </div>
-                <div class=" row  bento-card mt-3">
+                <div class=" row  bento-card mt-3" data-aos="fade-up-right">
                     <div class="col-12 col-md-6">
                         <div id="chart"></div>
-                       
+
                     </div>
                     <div class="col-12 col-md-6">
-                        
+
                         <div id="chart2"></div>
                     </div>
-                    
-                    
+
+
                 </div>
-                <div class=" row  bento-card mt-3">
+                <div class=" row  bento-card mt-3 " data-aos="fade-up-left">
                     <div class="col-12 col-md-6">
                         <div id="chart3"></div>
-                       
+
                     </div>
                     <div class="col-12 col-md-6">
-                        
+
                         <div id="chart4"></div>
                     </div>
-                    
-                    
+
+
                 </div>
-                <div class=" row  bento-card mt-3">
+                <div class=" row  bento-card mt-3" data-aos="fade-down-right">
                     <div class="col-6 col-md-3">
                         <div id="chart5"></div>
                     </div>
@@ -127,7 +128,7 @@
                     <div class="col-6 col-md-3">
                         <div id="chart8"></div>
                     </div>
-                    
+
                 </div>
             </div>
         </main>
@@ -137,7 +138,7 @@
             <h5 class="fw-bold mb-0"><i class="bi bi-lightning-charge-fill text-warning"></i> Alke Wallet</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
         </div>
-        <div class="offcanvas-body p-4">
+        <div class="offcanvas-body p-4" data-aos="fade-right">
             <div class="p-3 mb-4 rounded-4 text-white" style="background: var(--primary-blue);">
                 <small class="opacity-75">Saldo Disponible</small>
                 <h2 class="fw-bold mb-0" id="mobileMenuBalance">$22.000</h2>
@@ -163,66 +164,75 @@
         </div>
     </div>
     <!-- Modal 1: Depósito -->
-    <div class="modal fade" id="transactionModal1"  tabindex="-1" aria-labelledby="transactionModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content shadow-lg border-0 rounded-4">
-            
-            <div class="modal-header border-0 pb-0">
-                <h6 class="modal-title fw-semibold text-muted w-100 text-center" id="transactionModalLabel">Detalle del Movimiento</h6>
-                <button type="button" class="btn-close position-absolute end-0 top-0 m-3" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-            </div>
+    <div class="modal fade" id="transactionModal1" tabindex="-1" aria-labelledby="transactionModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content shadow-lg border-0 rounded-4">
 
-            <div class="modal-body px-4">
-                
-                <div class="text-center mb-4 mt-2">
-                    <div class="d-inline-flex align-items-center justify-content-center bg-success-subtle text-success rounded-circle mb-3" style="width: 64px; height: 64px;">
-                        <i class="bi bi-arrow-down-left fs-2"></i>
-                    </div>
-                    <h5 class="fw-bold mb-1">Depósito Recibido</h5>
-                    <p class="text-muted small mb-2">Banco Estado</p>
-                    <h1 class="display-6 fw-bold text-success mt-2 mb-0">+$500.00</h1>
-                    <span class="badge rounded-pill bg-success-subtle text-success mt-2 px-3 py-1">
-                        <i class="bi bi-check-circle-fill me-1"></i> Completado
-                    </span>
+                <div class="modal-header border-0 pb-0">
+                    <h6 class="modal-title fw-semibold text-muted w-100 text-center" id="transactionModalLabel">Detalle
+                        del Movimiento</h6>
+                    <button type="button" class="btn-close position-absolute end-0 top-0 m-3" data-bs-dismiss="modal"
+                        aria-label="Cerrar"></button>
                 </div>
 
-                <hr class="opacity-25 my-4">
+                <div class="modal-body px-4">
 
-                <div class="vstack gap-3 text-sm">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <span class="text-muted small">Fecha y Hora</span>
-                        <span class="fw-medium small">23 Dic, 2024 • 14:22</span>
+                    <div class="text-center mb-4 mt-2">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-success-subtle text-success rounded-circle mb-3"
+                            style="width: 64px; height: 64px;">
+                            <i class="bi bi-arrow-down-left fs-2"></i>
+                        </div>
+                        <h5 class="fw-bold mb-1">Depósito Recibido</h5>
+                        <p class="text-muted small mb-2">Banco Estado</p>
+                        <h1 class="display-6 fw-bold text-success mt-2 mb-0">+$500.00</h1>
+                        <span class="badge rounded-pill bg-success-subtle text-success mt-2 px-3 py-1">
+                            <i class="bi bi-check-circle-fill me-1"></i> Completado
+                        </span>
                     </div>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <span class="text-muted small">Método de Pago</span>
-                        <span class="fw-medium small">Transferencia TEF</span>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <span class="text-muted small">ID Transacción</span>
-                        <span class="fw-medium small font-monospace text-muted">#TX-982341</span>
+
+                    <hr class="opacity-25 my-4">
+
+                    <div class="vstack gap-3 text-sm">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-muted small">Fecha y Hora</span>
+                            <span class="fw-medium small">23 Dic, 2024 • 14:22</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-muted small">Método de Pago</span>
+                            <span class="fw-medium small">Transferencia TEF</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-muted small">ID Transacción</span>
+                            <span class="fw-medium small font-monospace text-muted">#TX-982341</span>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="modal-footer border-0 flex-column pb-4 px-4">
-                <button type="button" class="btn btn-dark w-100 rounded-3 mb-2 py-2">
-                    <i class="bi bi-share-fill me-2"></i>Compartir Comprobante
-                </button>
-                <button type="button" class="btn btn-link text-decoration-none text-muted w-100 py-1" data-bs-dismiss="modal">
-                    Cerrar
-                </button>
+                <div class="modal-footer border-0 flex-column pb-4 px-4">
+                    <button type="button" class="btn btn-dark w-100 rounded-3 mb-2 py-2">
+                        <i class="bi bi-share-fill me-2"></i>Compartir Comprobante
+                    </button>
+                    <button type="button" class="btn btn-link text-decoration-none text-muted w-100 py-1"
+                        data-bs-dismiss="modal">
+                        Cerrar
+                    </button>
+                </div>
             </div>
         </div>
     </div>
-</div>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init(); // Esto activa la magia
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="https://unpkg.com/tabulator-tables@6.2.5/dist/js/tabulator.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src = "./asset/js/transactions.js"></script>
+    <script src="./asset/js/transactions.js"></script>
     <script src="./asset/js/chart2.js"></script>
-    
-    
+
+
 </body>
 
 </html>

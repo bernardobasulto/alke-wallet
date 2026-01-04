@@ -16,7 +16,7 @@
 
 <body class="dashboard-page">
     <div class="wrapper">
-        <nav class="sidebar">
+        <nav class="sidebar" data-aos="fade-right">
             <div class="mb-5 d-flex align-items-center">
                 <h4 class="fw-bold mb-0 text-dark">
                     <i class="bi bi-lightning-charge-fill text-warning"></i> Alka Wallet
@@ -41,7 +41,7 @@
         </nav>
         <main class="main-content">
 
-            <header class="top-nav flex-wrap">
+            <header class="top-nav flex-wrap" data-aos="fade-down-left">
                 <div class="d-flex align-items-center gap-3">
                     <button class="btn btn-light d-lg-none" type="button" data-bs-toggle="offcanvas"
                         data-bs-target="#mobileMenu">
@@ -95,7 +95,8 @@
             <div class="row g-4">
 
                 <div class="col-12 col-xl-4">
-                    <div class="bento-card">
+                    <div class="bento-card" data-aos="fade-left" data-aos-anchor="#example-anchor" data-aos-offset="650"
+                        data-aos-duration="500">
                         <div class="d-flex justify-content-between mb-4 align-items-center">
                             <div>
                                 <h6 class="fw-bold mb-1">Tarjetas Activas</h6>
@@ -263,26 +264,27 @@
                     Resumen contactos
      ================================================
     -->
-<div class="col-12 col-md-4 ">
+                <div class="col-12 col-md-4 " >
+                    <div data-aos="fade-left" data-aos-anchor="#example-anchor" data-aos-offset="600"
+                        data-aos-duration="1300">
+                    <div class="row-2 row-md-2" id="columnchart"></div>
+                    <div class="row-2 row-md-2" id="linechart" ></div>
+                        </div>
+                </div>
+                <div class="col-md-4" >
+                    <div class="row-6 row-md-4" id="circlechart"></div>
+                    <div class="row-6 row-md-4" id="progress1"></div>
+                    <div class="row-6 row-md-4" id="progress2"></div>
+                    <div class="row-6 row-md-4" id="progress3"></div>
 
-<div class="row-2 row-md-2" id="columnchart"></div>
-<div class="row-2 row-md-2" id="linechart"></div>
-
-</div>
-<div class="col-md-4">
-<div class="row-6 row-md-4" id="circlechart"></div>
-<div class="row-6 row-md-4" id="progress1"></div>
-<div class="row-6 row-md-4" id="progress2"></div>
-<div class="row-6 row-md-4" id="progress3"></div>
-
-</div>
+                </div>
 
 
                 <div class="col-12 col-md-5">
-                <div id="chart3"></div>
+                    <div id="chart3"></div>
                 </div>
                 <div class="col-12 col-md-7">
-                    <div class="bento-card h-100 d-flex flex-column justify-content-between">
+                    <div class="bento-card h-100 d-flex flex-column justify-content-between" data-aos="fade-right">
                         <div>
                             <div class="d-flex justify-content-between align-items-center mb-4">
                                 <h6 class="fw-bold mb-0 text-muted small">👥 CONTACTOS FRECUENTES</h6>
@@ -520,7 +522,7 @@
             <h5 class="fw-bold">Menú</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
         </div>
-        <div class="offcanvas-body">
+        <div class="offcanvas-body" data-aos="fade-right">
             <div class="p-3 mb-4 rounded-4 text-white" style="background: var(--primary-blue);">
                 <small class="opacity-75">Saldo Disponible</small>
                 <h2 class="fw-bold mb-0" id="mobileMenuBalance">$22.000</h2>
@@ -722,7 +724,7 @@
     <script>
         AOS.init(); // Esto activa la magia
     </script>
-<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="./asset/js/card-manager.js"></script>
